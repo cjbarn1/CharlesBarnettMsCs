@@ -258,12 +258,18 @@
 			var contestantFullNum = parseInt(value);
 			console.log(value);
 			if(winningNumsArray.includes(contestantFullNum)){
-					alert(contestantFullNum + " is a Winner!!!");
+					var audio = new Audio('cheer.wav');
+					audio.play();
+					setTimeout(function() { alert(contestantFullNum + " is a Winner!!!"); }, 20);
+					/*alert(contestantFullNum + " is a Winner!!!"); */
 					resetDropDown();
 					return;
 				}
 			else{
-					alert("You are a loser!!!!");
+					var audio2 = new Audio('lose.wav');
+					audio2.play();
+					setTimeout(function() { alert("You are a loser!!!!"); }, 20);
+					/*alert("You are a loser!!!!"); */
 					resetDropDown();
 					return;
 				}
