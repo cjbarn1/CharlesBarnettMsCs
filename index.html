@@ -1,0 +1,274 @@
+<html>
+	<head>
+	
+	
+	</head>
+	<body>
+		<div id="firstDiv">
+			<span>User</span><input id="userName"><br>
+			<span>Login</span><input type="password" id="password"><br>
+			<button id="submitButton" onclick="logIn()">Submit</button>
+		</div>
+		<div id="secondDiv" style="visibility: hidden;">
+			<p><b>STEP 1</b></p>
+			<p id="instructions">Please enter the range of numbers for the tickets to be distributed:</p>
+			<span>Lowest ticket # distributed</span><input id="minNumber" type="number" minlength="4" maxlength="4" size="4"><br>
+			<span>Highest ticket # distributed</span><input id="maxNumber" type="number" minlength="4" maxlength="4" size="4"><br><br>
+			<button id="submitButton2" onclick="distributeTickets()">Submit</button>
+		</div>
+		<div id="thirdDiv" style="visibility: hidden;">
+			<p><b>STEP 2</b></p>
+			<p id="instructions">Please enter the number of winners for this round of Reverse Raffle</p>
+			<input id="numWinners" min="0" max="10" type="number"><br>
+			<button id="submitButton3" onclick="validateNumOfWinners()">Submit</button>
+		</div>
+		<div id="FourthDiv" style="visibility: hidden;">
+			<p><b>STEP 3</b></p>
+			<label for="entry0" id="label0" style="visibility: hidden;">1st Winning Number</label>
+			<input type="number" name="entry0" id="entry0" value="0" style="visibility: hidden;" maxlength="4" size="4"><br> 
+			<label for="entry1" id="label1" style="visibility: hidden;">2nd Winning Number</label>
+			<input type="number" name="entry1" id="entry1" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry2" id="label2" style="visibility: hidden;">3rd Winning Number</label>
+			<input type="number" name="entry2" id="entry2" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry3" id="label3" style="visibility: hidden;">4th Winning Number</label>
+			<input type="number" name="entry3" id="entry3" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry4" id="label4" style="visibility: hidden;">5th Winning Number</label>
+			<input type="number" name="entry4" id="entry4" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry5" id="label5" style="visibility: hidden;">6th Winning Number</label>
+			<input type="number" name="entry5" id="entry5" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry6" id="label6" style="visibility: hidden;"> 7th Winning Number</label>
+			<input type="number" name="entry6" id="entry6" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry7" id="label7" style="visibility: hidden;">8th Winning Number</label>
+			<input type="number" name="entry7" id="entry7" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry8" id="label8" style="visibility: hidden;">9th Winning Number</label>
+			<input type="number" name="entry8" id="entry8" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<label for="entry9" id="label9" style="visibility: hidden;">10th Winning Number</label>
+			<input type="number" name="entry9" id="entry9" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
+			<button id="submitButton4" onclick="validateNumbersInRange()">Submit Winning Numbers</button><br>
+			<p><b>When the submit button is pressed, the game will be set for the contestants</b></p>
+		</div>
+		<div id="contestantDiv" style="visibility: hidden; position: absolute; top: 0px;">
+			<p id="instructions">Welcome to the Reverse Raffle. Please enter the 4 digit number that you have drawn below:</p>			
+			<select id="dd1">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+			<select id="dd2">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+			<select id="dd3">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+			<select id="dd4">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+			<button id="contestantSubmit" onclick="processContestantEntry()">Submit</button>
+		</div>
+	<script type="text/javascript">
+		var minNum = 0;
+		var maxNum = 0;
+		var totalTickets = 0;
+		var winnersAllowed = 0;
+		var currentEntryID = "";
+		var currentLabelID = "";
+		var winningNumsArray;
+		
+		function winningNumberPrep(arraySubscript){
+			/*alert("We made it to the winningNumberPrep function!! YAYYYY!!");*/
+			currentEntryID = "entry" + String(arraySubscript);
+			currentLabelID = "label" + String(arraySubscript);
+			/*alert(currentEntryID);*/
+			/*alert(currentLabelID);*/
+		}	
+		function clearArray(){
+			for (i = 0; i < winningNumsArray.length; i++) {
+						winningNumsArray[i] = -1;}
+						return;	
+		}
+		
+		function resetDropDown(){
+			/*var d = document.getElementById("dd1");
+			d.options[e.selectedIndex].index = 0;
+			document.getElementById("dd2");
+			d.options[e.selectedIndex].index = 0;
+			document.getElementById("dd3");
+			d.options[e.selectedIndex].index = 0;
+			document.getElementById("dd4");
+			d.options[e.selectedIndex].index = 0; */
+			document.getElementById("dd1").selectedIndex = 0;
+			document.getElementById("dd2").selectedIndex = 0;
+			document.getElementById("dd3").selectedIndex = 0;
+			document.getElementById("dd4").selectedIndex = 0;
+		}
+		
+		function logIn(){
+			/*window.alert("In the function");*/
+			var user = document.getElementById("userName").value;
+			/*window.alert("user equals " + user);  error here */
+			var pw = document.getElementById("password").value;	
+			/*window.alert(pw); */
+			if(user == "dave" && pw == "123"){
+					/*window.alert("We are now in the IF statement"); */
+					document.getElementById("secondDiv").style.visibility = 'visible';
+					document.getElementById("firstDiv").style.visibility = 'hidden';
+				}
+			else{
+				alert("Incorrect user name and/or password. Please try again.");
+				return;
+				 }
+			}
+		
+		function distributeTickets(){
+			minNum = parseInt(document.getElementById("minNumber").value);
+			maxNum = parseInt(document.getElementById("maxNumber").value);
+			if(Number.isNaN(minNum)){
+				alert("Lowest ticket number is a required field. Please provide the lowest ticket number");
+				return;
+			}
+			if(Number.isNaN(maxNum)){
+				alert("Highest ticket number is a required field. Please provide the highest ticket number");
+				return;
+			}
+			totalTickets = maxNum - minNum;
+			winnersAllowed = parseInt(document.getElementById("numWinners").value);
+			if(minNum >= maxNum){
+				alert("The highest ticket number must be greater than the lowest ticket number. Please correct");
+				return;
+			}
+			document.getElementById("secondDiv").style.visibility = 'hidden';
+			document.getElementById("thirdDiv").style.visibility = 'visible';			
+		}
+		
+		function validateNumOfWinners(){
+			/*window.alert("In the function validateNumOfWinners");*/
+			winnersAllowed = parseInt(document.getElementById("numWinners").value);
+			if(Number.isNaN(winnersAllowed)){
+				alert("Please provide the number of winners for this round. This field is required.");
+				return;
+			}
+			if(winnersAllowed > 10){
+				alert("No more than 10 winners are allowed in this game. Please choose ten or less winners or play multiple rounds.");
+				return;
+			}
+			if(winnersAllowed > totalTickets){
+				alert("Number of winners CANNOT exceed the total number of tickets. Please correct before proceeding.");
+				return;
+			}
+			document.getElementById("thirdDiv").style.visibility = 'hidden';
+			document.getElementById("FourthDiv").style.visibility = 'visible';
+			winningNumsArray = new Array(winnersAllowed);
+			var i;
+			for (i = 0; i < winningNumsArray.length; i++) {
+				winningNumberPrep(i);
+				document.getElementById(currentEntryID).style.visibility = 'visible';
+				document.getElementById(currentLabelID).style.visibility = 'visible';
+			}
+			/*alert("We are where we need to be in the last function.");*/
+			/*document.getElementById("endTimeLabel").style.display = 'none';*/
+			/*document.getElementById("endTimeLabel").style.display = 'block';*/
+		}
+		
+		function validateNumbersInRange(){
+			/*alert("Checking Admin Input for Validation") */
+			for (i = 0; i < winningNumsArray.length; i++) {
+				winningNumberPrep(i);
+				var currentNum = parseInt(document.getElementById(currentEntryID).value);
+				console.log(currentNum);
+				if(minNum > currentNum){
+					alert("Number must be higher than the smallest ticket number. Please correct entry #" + String(i+1));
+					console.log(currentNum);
+					console.log(minNum);
+					clearArray();
+					return;
+				}
+				if(maxNum < currentNum){
+					alert("Number must be smaller than the highest ticket number. Please correct entry #" + String(i+1));
+					clearArray();
+					return;
+				}
+				if(i == 0){
+					winningNumsArray[0] = currentNum;
+					/*console.log(winningNumsArray);*/
+					continue;
+				}
+				/* check if number is already member of array. If not, add it. If it is, break the loop and alert the admin */
+				if(winningNumsArray.includes(currentNum)){
+					alert(currentNum + " is a duplicate value for entry #" + String(i+1) + ". Please correct with a non-duplicate value to proceed.");
+					clearArray();
+					return;
+				}
+				else{
+					winningNumsArray[i] = currentNum;
+				}
+				console.log(winningNumsArray);	
+			}		
+			document.getElementById("contestantDiv").style.visibility = 'visible';
+			document.getElementById("FourthDiv").style.display = 'none';
+			console.log("At the end of the code");
+		}
+		
+		function processContestantEntry(){
+			var contestantString;
+			var e = document.getElementById("dd1");
+			var value = String(e.options[e.selectedIndex].value);
+			e = document.getElementById("dd2");
+			value += String(e.options[e.selectedIndex].value);
+			e = document.getElementById("dd3");
+			value += String(e.options[e.selectedIndex].value);
+			e = document.getElementById("dd4");
+			value += String(e.options[e.selectedIndex].value);
+			var contestantFullNum = parseInt(value);
+			console.log(value);
+			if(winningNumsArray.includes(contestantFullNum)){
+					alert(contestantFullNum + " is a Winner!!!");
+					resetDropDown();
+					return;
+				}
+			else{
+					alert("You are a loser!!!!");
+					resetDropDown();
+					return;
+				}
+		}
+	</script>
+	
+	</body>
+
+
+
+</html>
