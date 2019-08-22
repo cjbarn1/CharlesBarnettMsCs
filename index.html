@@ -260,7 +260,7 @@
 			if(winningNumsArray.includes(contestantFullNum)){
 					var audio = new Audio('cheer.wav');
 					audio.play();
-					setTimeout(function() { alert(contestantFullNum + " is a Winner!!!"); }, 20);
+					setTimeout(function() { alert(contestantFullNum + " is a Winner!!!"); }, 1000);
 					/*alert(contestantFullNum + " is a Winner!!!"); */
 					resetDropDown();
 					return;
@@ -268,7 +268,7 @@
 			else{
 					var audio2 = new Audio('lose.wav');
 					audio2.play();
-					setTimeout(function() { alert("Ticket #" + contestantFullNum + " is NOT a winner. You are a loser!!!!"); }, 20);
+					setTimeout(function() { alert("Ticket #" + contestantFullNum + " is NOT a winner. You are a loser!!!!"); }, 500);
 					/*alert("You are a loser!!!!"); */
 					resetDropDown();
 					return;
