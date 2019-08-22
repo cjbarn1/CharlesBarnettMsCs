@@ -177,7 +177,10 @@
 		function validateNumOfWinners(){
 			/*window.alert("In the function validateNumOfWinners");*/
 			winnersAllowed = parseInt(document.getElementById("numWinners").value);
-			if(Number.isNaN(winnersAllowed)){
+			if(winnersAllowed == 0){
+				alert("Please provide the number of winners for this round. This field is required.");
+			}
+			if(Number.isNaN(winnersAllowed) || winnersAllowed == 0){
 				alert("Please provide the number of winners for this round. This field is required.");
 				return;
 			}
