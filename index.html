@@ -213,14 +213,14 @@
 				var currentNum = parseInt(document.getElementById(currentEntryID).value);
 				console.log(currentNum);
 				if(minNum > currentNum){
-					alert("Number must be higher than the smallest ticket number. Please correct entry #" + String(i+1));
+					alert("Number must be equal to or greater than the smallest ticket number. Please correct entry #" + String(i+1));
 					console.log(currentNum);
 					console.log(minNum);
 					clearArray();
 					return;
 				}
 				if(maxNum < currentNum){
-					alert("Number must be smaller than the highest ticket number. Please correct entry #" + String(i+1));
+					alert("Number must be equal to or less than the highest ticket number. Please correct entry #" + String(i+1));
 					clearArray();
 					return;
 				}
