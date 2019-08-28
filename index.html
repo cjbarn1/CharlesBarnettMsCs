@@ -111,6 +111,17 @@
 		var currentEntryID = "";
 		var currentLabelID = "";
 		var winningNumsArray;
+		var myEvent = document.getElementById("contestantNum");
+		
+		myEvent.addEventListener("keyup", function(event) {
+		// Number 13 is the "Enter" key on the keyboard
+		if (event.keyCode === 13) {
+			// Cancel the default action, if needed
+			event.preventDefault();
+			// Trigger the button element with a click
+			document.getElementById("contestantSubmit").click();
+		}
+		});
 		
 		function winningNumberPrep(arraySubscript){
 			currentEntryID = "entry" + String(arraySubscript);
@@ -255,14 +266,14 @@
 			if(winningNumsArray.includes(contestantFullNum)){
 					var audio = new Audio('cheer.wav');
 					audio.play();
-					setTimeout(function() { alert(contestantFullNum + " is a Winner!!!"); }, 500);
+					setTimeout(function() { alert(contestantFullNum + " is a Winner!!!"); }, 1000);
 					resetDropDown();
 					return;
 				}
 			else{
 					var audio2 = new Audio('lose.wav');
 					audio2.play();
-					setTimeout(function() { alert("Ticket #" + contestantFullNum + " is NOT a winner. You are a loser!!!!"); }, 1000);
+					setTimeout(function() { alert("Ticket #" + contestantFullNum + " is NOT a winner. Thanks for playing."); }, 1000);
 					resetDropDown();
 					return;
 				}
