@@ -1,19 +1,21 @@
 <html>
 	<head>
-	
-	
+	<link rel = "stylesheet"
+		type = "text/css"
+		href = "styles.css" />
 	</head>
 	<body>
 		<div id="firstDiv">
-			<span>User</span><input id="userName"><br>
-			<span>Login</span><input type="password" id="password"><br>
+			<span>User</span>&nbsp&nbsp&nbsp&nbsp&nbsp<input id="userName"><br>
+			<span>Login</span>&nbsp&nbsp&nbsp<input type="password" id="password"><br>
 			<button id="submitButton" onclick="logIn()">Submit</button>
 		</div>
 		<div id="secondDiv" style="visibility: hidden;">
+			<p><b>WELCOME TO THE ADMIN SECTION FOR THE REVERSE RAFFLE</b></p>
 			<p><b>STEP 1</b></p>
 			<p id="instructions">Please enter the range of numbers for the tickets to be distributed:</p>
-			<span>Lowest ticket # distributed</span><input id="minNumber" type="number" minlength="4" maxlength="4" size="4"><br>
-			<span>Highest ticket # distributed</span><input id="maxNumber" type="number" minlength="4" maxlength="4" size="4"><br><br>
+			<span>Lowest ticket # distributed:</span>&nbsp&nbsp&nbsp&nbsp&nbsp<input id="minNumber" type="number" minlength="4" maxlength="4" size="4"><br>
+			<span>Highest ticket # distributed:</span>&nbsp&nbsp&nbsp&nbsp&nbsp<input id="maxNumber" type="number" minlength="4" maxlength="4" size="4"><br><br>
 			<button id="submitButton2" onclick="distributeTickets()">Submit</button>
 		</div>
 		<div id="thirdDiv" style="visibility: hidden;">
@@ -23,7 +25,7 @@
 			<button id="submitButton3" onclick="validateNumOfWinners()">Submit</button>
 		</div>
 		<div id="FourthDiv" style="visibility: hidden;">
-			<p><b>STEP 3</b></p>
+			<p><b>STEP 3 - When the submit button is pressed, the game will be set for the contestants</b></p>
 			<label for="entry0" id="label0" style="visibility: hidden;">1st Winning Number</label>
 			<input type="number" name="entry0" id="entry0" value="0" style="visibility: hidden;" maxlength="4" size="4"><br> 
 			<label for="entry1" id="label1" style="visibility: hidden;">2nd Winning Number</label>
@@ -45,59 +47,61 @@
 			<label for="entry9" id="label9" style="visibility: hidden;">10th Winning Number</label>
 			<input type="number" name="entry9" id="entry9" value="0" style="visibility: hidden;" minlength="4" maxlength="4" size="4"><br>
 			<button id="submitButton4" onclick="validateNumbersInRange()">Submit Winning Numbers</button><br>
-			<p><b>When the submit button is pressed, the game will be set for the contestants</b></p>
 		</div>
-		<div id="contestantDiv" style="visibility: hidden; position: absolute; top: 0px;">
-			<p id="instructions">Welcome to the Reverse Raffle. Please enter the 4 digit number that you have drawn below:</p>			
-			<select id="dd1">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-			</select>
-			<select id="dd2">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-			</select>
-			<select id="dd3">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-			</select>
-			<select id="dd4">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-			</select>
-			<button id="contestantSubmit" onclick="processContestantEntry()">Submit</button>
+		<div id="contestantDiv" class="bg" style="visibility: hidden; position: absolute; top: 0px;">
+			<!-- <p id="instructions">Welcome to the Reverse Raffle. Please enter the 4 digit number that you have drawn below:</p> -->
+			<div class="contestantentry">
+			<!--    <select id="dd1">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+				<select id="dd2">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+				<select id="dd3">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+				<select id="dd4">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select> -->
+				<input type="text" name="contestantNum" id="contestantNum" value="" maxlength="4" size="4" style="width:140px; height: 70px"><br>
+			</div>	
+			<button id="contestantSubmit" class="contestantsubmit" onclick="processContestantEntry()">Submit</button>
 		</div>
 	<script type="text/javascript">
 		var minNum = 0;
@@ -109,11 +113,8 @@
 		var winningNumsArray;
 		
 		function winningNumberPrep(arraySubscript){
-			/*alert("We made it to the winningNumberPrep function!! YAYYYY!!");*/
 			currentEntryID = "entry" + String(arraySubscript);
 			currentLabelID = "label" + String(arraySubscript);
-			/*alert(currentEntryID);*/
-			/*alert(currentLabelID);*/
 		}	
 		function clearArray(){
 			for (i = 0; i < winningNumsArray.length; i++) {
@@ -129,11 +130,12 @@
 			document.getElementById("dd3");
 			d.options[e.selectedIndex].index = 0;
 			document.getElementById("dd4");
-			d.options[e.selectedIndex].index = 0; */
+			d.options[e.selectedIndex].index = 0; 
 			document.getElementById("dd1").selectedIndex = 0;
 			document.getElementById("dd2").selectedIndex = 0;
 			document.getElementById("dd3").selectedIndex = 0;
-			document.getElementById("dd4").selectedIndex = 0;
+			document.getElementById("dd4").selectedIndex = 0;*/
+			document.getElementById("contestantNum").value = "";
 		}
 		
 		function logIn(){
@@ -211,7 +213,6 @@
 			for (i = 0; i < winningNumsArray.length; i++) {
 				winningNumberPrep(i);
 				var currentNum = parseInt(document.getElementById(currentEntryID).value);
-				console.log(currentNum);
 				if(minNum > currentNum){
 					alert("Number must be equal to or greater than the smallest ticket number. Please correct entry #" + String(i+1));
 					console.log(currentNum);
@@ -246,31 +247,23 @@
 		}
 		
 		function processContestantEntry(){
-			var contestantString;
-			var e = document.getElementById("dd1");
-			var value = String(e.options[e.selectedIndex].value);
-			e = document.getElementById("dd2");
-			value += String(e.options[e.selectedIndex].value);
-			e = document.getElementById("dd3");
-			value += String(e.options[e.selectedIndex].value);
-			e = document.getElementById("dd4");
-			value += String(e.options[e.selectedIndex].value);
-			var contestantFullNum = parseInt(value);
+			console.log("we are in the onclick button function for contestant submit");
+			var value = document.getElementById("contestantNum").value;
 			console.log(value);
+			var contestantFullNum = parseInt(value);
+			console.log(contestantFullNum);
 			if(winningNumsArray.includes(contestantFullNum)){
 					var audio = new Audio('cheer.wav');
 					audio.play();
 					setTimeout(function() { alert(contestantFullNum + " is a Winner!!!"); }, 1000);
-					/*alert(contestantFullNum + " is a Winner!!!"); */
-					resetDropDown();
+					setTimeout(resetDropDown(), 5000);
 					return;
 				}
 			else{
 					var audio2 = new Audio('lose.wav');
 					audio2.play();
 					setTimeout(function() { alert("Ticket #" + contestantFullNum + " is NOT a winner. You are a loser!!!!"); }, 500);
-					/*alert("You are a loser!!!!"); */
-					resetDropDown();
+					setTimeout(resetDropDown(), 5000);
 					return;
 				}
 		}

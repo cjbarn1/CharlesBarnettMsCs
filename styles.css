@@ -1,0 +1,53 @@
+.bg { 
+  /* The image used */
+  background-image: url("toys.jpg");
+
+  /* Full height */
+  height: 100%; 
+  width:  100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contestantentry{
+	position: 	absolute;
+	top:		520px;
+	right: 		730px;	
+}
+
+
+#contestantNum{
+	height: 50px;
+	font-size: 60px;
+	resize: none;
+}
+
+.contestantsubmit {
+	position: 	absolute; 
+	top:		595px;
+	right: 		738px;
+	background-color:#44c767;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+
+/*.contestantsubmit:hover {
+	background-color:#5cbf2a;
+} 
+
+.contestantsubmit:active {
+	position:relative;
+	top:1px;
+} */
