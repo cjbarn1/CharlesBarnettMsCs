@@ -13,21 +13,20 @@
 
 .contestantentry{
 	position: 	fixed;
-	top:		520px;
-	right: 		730px;	
+	top:		67%;
+	right: 		45%;	
 }
 
 
 #contestantNum{
 	height: 50px;
 	font-size: 60px;
-	resize: none;
 }
 
 .contestantsubmit {
 	position: 	fixed; 
-	top:		595px;
-	right: 		738px;
+	top:		77%;
+	right: 		45.5%;
 	background-color:#44c767;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
