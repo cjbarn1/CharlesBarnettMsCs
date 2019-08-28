@@ -12,7 +12,7 @@
 }
 
 .contestantentry{
-	position: 	absolute;
+	position: 	fixed;
 	top:		520px;
 	right: 		730px;	
 }
@@ -25,7 +25,7 @@
 }
 
 .contestantsubmit {
-	position: 	absolute; 
+	position: 	fixed; 
 	top:		595px;
 	right: 		738px;
 	background-color:#44c767;
